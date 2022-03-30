@@ -1,0 +1,135 @@
+﻿@model CapstoneProject_PayrollSystem_v1.Models.RegisterViewModel
+@{
+    Layout = "";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Registration Page</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    @Styles.Render("~/Content/css")
+    <!-- Theme style -->
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="hold-transition register-page">
+    <div class="register-box">
+        <div class="register-logo">
+            <img src="~/Adminlte/img/underConstruction.png" class="img-fluid" alt="Company logo">
+        </div>
+
+        <div class="card">
+            <div class="card-body register-card-body">
+                <p class="login-box-msg">Register a new user</p>
+
+
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+
+                    @* username
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Full name">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+                                </div>
+                            </div>
+                        </div>*@
+
+
+
+
+                    <!-- Email -->
+                    <div class="input-group mb-2">
+                        @Html.LabelFor(m => m.Email, new { @class = "input-group mb-1 control-label" })
+                        <div class="input-group mb-1">
+                            @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", @class = "form-control" })
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Email -->
+
+
+
+
+
+
+                    <!-- Password -->
+                    <div class="input-group mb-2">
+                        @Html.LabelFor(m => m.Password, new { @class = "input-group mb-1 control-label" })
+                        <div class="input-group mb-1">
+                            @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "form-control" })
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Password -->
+
+
+
+
+                    <!-- Password -->
+                    <div class="input-group mb-2">
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "input-group mb-1 control-label" })
+                        <div class="input-group mb-1">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "Confirm Password", @class = "form-control" })
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- /.todo-->
+                    <div class="col-8">
+                        <div class="icheck-primary">
+                            <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                            <label for="agreeTerms">
+                                I agree to the <a href="#">terms</a>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /.todo -->
+
+
+
+                    <!-- /.col -->
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </div>
+                    <!-- /.col -->
+
+                }
+
+                <a>@Html.ActionLink("I already have an account", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</a>
+
+            </div>
+            <!-- /.form-box -->
+        </div><!-- /.card -->
+    </div>
+    <!-- /.register-box -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/adminlte/js")
+</body>
+</html>
